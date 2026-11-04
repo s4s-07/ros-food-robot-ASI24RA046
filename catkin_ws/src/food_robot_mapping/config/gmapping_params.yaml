@@ -1,0 +1,45 @@
+# Gmapping parameters — tuned for indoor cafeteria (20 x 15 m)
+# ──────────────────────────────────────────────────────────────
+
+# Particle filter
+particles:          80
+resampleThreshold:  0.5
+
+# Laser / sensor model
+maxRange:           8.0
+maxUrange:          7.5
+sigma:              0.05
+kernelSize:         1
+lstep:              1.0
+minimumScore:       50.0
+
+# Motion update thresholds
+linearUpdate:   0.2
+angularUpdate:  0.3
+temporalUpdate: 3.0
+
+# Map dimensions (covers the 20x15 cafeteria + margin)
+xmin:   -12.0
+xmax:    12.0
+ymin:   -10.0
+ymax:    10.0
+delta:   0.05      # 5 cm/pixel resolution
+
+# Scan matching
+iterations:   5
+lsigma:       0.075
+ogain:        3.0
+lskip:        0
+
+# Odometry noise model
+srr:  0.1
+srt:  0.2
+str:  0.1
+stt:  0.2
+
+# Map update
+map_update_interval: 2.0
+llsamplerange:       0.01
+llsamplestep:        0.01
+lasamplerange:       0.005
+lasamplestep:        0.005
