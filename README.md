@@ -4,7 +4,7 @@
 **Student:** Sayanth S Kumar | **Reg No:** ASI24RA046  
 **Department:** Robotics & Automation | **Institution:** ASIET Kalady  
 **University:** APJ Abdul Kalam Technological University (KTU)  
-**Guides:** Dr. Vinila M L | Ms. Safeena M K
+**Guide:** Mr. Arun Kumar
 
 ---
 
