@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>food_robot_gazebo</name>
+  <version>0.1.0</version>
+  <description>Gazebo cafeteria simulation world for food delivery robot.</description>
+  <maintainer email="robot@example.com">Food Robot Dev</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_plugins</exec_depend>
+  <exec_depend>food_robot_description</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+</package>
