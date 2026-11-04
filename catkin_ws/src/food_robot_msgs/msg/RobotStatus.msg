@@ -1,0 +1,6 @@
+std_msgs/Header header
+string current_task
+float32 battery_percent
+bool compartment_locked
+string compartment_status
+string robot_state
