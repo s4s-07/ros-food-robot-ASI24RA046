@@ -1,0 +1,5 @@
+string destination_name
+string order_id
+---
+bool accepted
+string message
