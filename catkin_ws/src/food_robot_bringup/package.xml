@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>food_robot_bringup</name>
+  <version>0.1.0</version>
+  <description>Top-level bringup package for the food delivery robot system.</description>
+  <maintainer email="robot@example.com">Food Robot Dev</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>actionlib</depend>
+  <depend>food_robot_msgs</depend>
+  <exec_depend>food_robot_gazebo</exec_depend>
+  <exec_depend>food_robot_navigation</exec_depend>
+  <exec_depend>food_robot_control</exec_depend>
+  <exec_depend>food_robot_mapping</exec_depend>
+  <exec_depend>rosbag</exec_depend>
+</package>
