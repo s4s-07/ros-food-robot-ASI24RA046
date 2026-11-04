@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ============================================================
+       Compartment Xacro Macro
+       Mounts a food delivery compartment box + hinged lid on
+       any parent link.
+       Usage:
+         <xacro:compartment prefix="food_" parent="base_link"
+                            origin_xyz="-0.05 0 0.1" origin_rpy="0 0 0"/>
+       ============================================================ -->
+
+  <xacro:macro name="compartment" params="prefix parent origin_xyz origin_rpy">
+
+    <!-- ── Compartment base box ─────────────────────────────────── -->
+    <link name="${prefix}compartment_base_link">
+      <visual>
+        <geometry>
+          <box size="0.30 0.30 0.20"/>
+        </geometry>
+        <material name="orange">
+          <color rgba="1.0 0.5 0.0 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="0.30 0.30 0.20"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.5"/>
+        <!-- Solid box inertia: I = m/12*(y^2+z^2), etc. -->
+        <inertia ixx="0.00542" ixy="0.0" ixz="0.0"
+                 iyy="0.00542" iyz="0.0"
+                 izz="0.00750"/>
+      </inertial>
+    </link>
+
+    <!-- Joint: attach compartment base to parent -->
+    <joint name="${prefix}compartment_base_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child  link="${prefix}compartment_base_link"/>
+      <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+    </joint>
+
+    <!-- ── Lid link ──────────────────────────────────────────────── -->
+    <link name="${prefix}lid_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.30 0.30 0.01"/>
+        </geometry>
+        <material name="dark_grey">
+          <color rgba="0.2 0.2 0.2 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="0.30 0.30 0.01"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.1"/>
+        <inertia ixx="0.000758" ixy="0.0" ixz="0.0"
+                 iyy="0.000758" iyz="0.0"
+                 izz="0.001500"/>
+      </inertial>
+    </link>
+
+    <!-- Joint: lid is revolute (opens upward along Y axis) -->
+    <!-- Closed = 0 rad, Open = -1.57 rad (lifts forward) -->
+    <joint name="${prefix}lid_joint" type="revolute">
+      <parent link="${prefix}compartment_base_link"/>
+      <child  link="${prefix}lid_link"/>
+      <!-- Pivot at the top-front edge of the box -->
+      <origin xyz="0.0 0.15 0.105" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-1.5707" upper="0.0" effort="10.0" velocity="1.0"/>
+      <dynamics damping="0.5" friction="0.1"/>
+    </joint>
+
+    <!-- ── Gazebo materials ─────────────────────────────────────── -->
+    <gazebo reference="${prefix}compartment_base_link">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+
+    <gazebo reference="${prefix}lid_link">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+  </xacro:macro>
+</robot>
