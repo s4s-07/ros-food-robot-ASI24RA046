@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>food_robot_msgs</name>
+  <version>0.1.0</version>
+  <description>Custom messages, services and actions for food delivery robot.</description>
+  <maintainer email="robot@example.com">Food Robot Dev</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>actionlib_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>actionlib_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+</package>
