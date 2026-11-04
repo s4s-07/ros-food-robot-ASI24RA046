@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Load robot URDF into parameter server -->
+  <param name="robot_description"
+         command="xacro $(find food_robot_description)/urdf/food_robot.urdf.xacro"/>
+
+  <!-- Publish TF transforms from robot_description -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+        type="robot_state_publisher" output="screen"/>
+
+  <!-- GUI slider for joint states (lets you open/close the lid) -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui"
+        type="joint_state_publisher_gui" output="screen"/>
+
+  <!-- RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" output="screen"
+        args="-d $(find food_robot_description)/config/rviz.rviz"
+        required="false"/>
+</launch>
