@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="bag_prefix" default="/tmp/food_robot_delivery"/>
+
+  <node name="rosbag_record" pkg="rosbag" type="record" output="screen"
+        args="-o $(arg bag_prefix)
+              /food_robot/status
+              /food_robot/robot_state
+              /food_robot/compartment_status
+              /food_robot/compartment_locked
+              /scan
+              /odom
+              /cmd_vel
+              /tf
+              /tf_static
+              /navigate_to_goal_v2/goal
+              /navigate_to_goal_v2/feedback
+              /navigate_to_goal_v2/result
+              /navigate_to_goal/goal
+              /navigate_to_goal/result
+              /map
+              /move_base/status
+              /move_base/result"/>
+</launch>
