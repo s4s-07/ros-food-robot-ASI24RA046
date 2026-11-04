@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>food_robot_navigation</name>
+  <version>0.1.0</version>
+  <description>AMCL + move_base navigation stack for food delivery robot in cafeteria.</description>
+  <maintainer email="robot@example.com">Food Robot Dev</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>amcl</exec_depend>
+  <exec_depend>move_base</exec_depend>
+  <exec_depend>map_server</exec_depend>
+  <exec_depend>global_planner</exec_depend>
+  <exec_depend>dwa_local_planner</exec_depend>
+  <exec_depend>costmap_2d</exec_depend>
+  <exec_depend>nav_core</exec_depend>
+  <exec_depend>food_robot_msgs</exec_depend>
+</package>
