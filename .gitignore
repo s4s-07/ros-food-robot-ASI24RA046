@@ -1,0 +1,27 @@
+# ROS build artifacts
+catkin_ws/build/
+catkin_ws/devel/
+catkin_ws/logs/
+catkin_ws/.catkin_workspace
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# Word documents (optional - remove this line if you want to include the report)
+*.docx
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
