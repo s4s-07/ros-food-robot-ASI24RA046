@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>food_robot_mapping</name>
+  <version>0.1.0</version>
+  <description>SLAM mapping for food delivery robot in cafeteria environment.</description>
+  <maintainer email="robot@example.com">Food Robot Dev</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>gmapping</exec_depend>
+  <exec_depend>map_server</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>tf</exec_depend>
+</package>
