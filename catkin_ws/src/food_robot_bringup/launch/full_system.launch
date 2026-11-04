@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- ── Arguments ─────────────────────────────────────────────── -->
+  <arg name="use_sim_time" default="true"/>
+  <param name="/use_sim_time" value="$(arg use_sim_time)"/>
+
+  <!-- ── 1. Cafeteria world + robot spawn ──────────────────────── -->
+  <include file="$(find food_robot_gazebo)/launch/cafeteria.launch"/>
+
+  <!-- ── 2. Navigation (AMCL + move_base) ─────────────────────── -->
+  <include file="$(find food_robot_navigation)/launch/navigation.launch"/>
+
+  <!-- ── 3. Compartment control service ───────────────────────── -->
+  <node name="compartment_control"
+        pkg="food_robot_control"
+        type="compartment_control.py"
+        output="screen"
+        respawn="true"/>
+
+  <!-- ── 4. Robot status publisher (1 Hz) ─────────────────────── -->
+  <node name="status_publisher"
+        pkg="food_robot_control"
+        type="status_publisher.py"
+        output="screen"
+        respawn="true"/>
+
+  <!-- ── 5. Delivery goal service ─────────────────────────────── -->
+  <node name="delivery_goal_service"
+        pkg="food_robot_control"
+        type="delivery_goal_service.py"
+        output="screen"
+        respawn="true"/>
+
+  <!-- ── 6. Navigate action server v2 (state machine) ─────────── -->
+  <node name="navigate_action_server_v2"
+        pkg="food_robot_control"
+        type="navigate_action_server_v2.py"
+        output="screen"
+        respawn="true"/>
+
+  <!-- ── 7. Basic action server (Module 2 baseline demo) ───────── -->
+  <node name="navigate_action_server"
+        pkg="food_robot_control"
+        type="navigate_action_server.py"
+        output="screen"
+        respawn="true"/>
+</launch>
