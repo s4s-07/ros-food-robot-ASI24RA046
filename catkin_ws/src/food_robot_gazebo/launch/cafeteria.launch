@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused"    default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui"       default="true"/>
+  <arg name="headless"  default="false"/>
+  <arg name="debug"     default="false"/>
+
+  <!-- Set simulation time -->
+  <param name="/use_sim_time" value="$(arg use_sim_time)"/>
+
+  <!-- Load robot URDF -->
+  <param name="robot_description"
+         command="xacro $(find food_robot_description)/urdf/food_robot.urdf.xacro"/>
+
+  <!-- Launch Gazebo with cafeteria world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name"   value="$(find food_robot_gazebo)/worlds/cafeteria.world"/>
+    <arg name="paused"       value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui"          value="$(arg gui)"/>
+    <arg name="headless"     value="$(arg headless)"/>
+    <arg name="debug"        value="$(arg debug)"/>
+  </include>
+
+  <!-- Publish robot state transforms -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+        type="robot_state_publisher" output="screen">
+    <param name="publish_frequency" value="50.0"/>
+  </node>
+
+  <!-- Joint state publisher (for non-driven joints like lid) -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher"
+        type="joint_state_publisher" output="screen"/>
+
+  <!-- Spawn robot into Gazebo -->
+  <include file="$(find food_robot_gazebo)/launch/spawn_robot.launch"/>
+</launch>
